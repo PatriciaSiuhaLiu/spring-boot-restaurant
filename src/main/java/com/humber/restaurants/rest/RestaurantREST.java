@@ -49,7 +49,8 @@ public class RestaurantREST {
         }
         return new ResponseEntity<String>("Not found", HttpStatus.NOT_FOUND);
     }
-    @PutMapping("/restaurants/{restaurantId}")
+    
+    @PutMapping("/{restaurantId}")
     public ResponseEntity<String> modifyRestaurant(@PathVariable String restaurantId, @RequestBody Restaurant restaurant) {
         boolean isUpdated = restaurantService.updateRestaurant(restaurantId, restaurant);
         if(isUpdated)

@@ -25,11 +25,11 @@ public class RestaurantService {
     }
 
     public Optional<Restaurant> getRestaurantById(String restaurantId) {
-        return restaurantRepository.findByRestaurantId(restaurantId);
+        return restaurantRepository.findById(restaurantId);
     }
-
+    
     public boolean updateRestaurant(String restaurantId, Restaurant restaurant) {
-        Optional<Restaurant> optionalRestaurant = restaurantRepository.findByRestaurantId(restaurantId);
+    	Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(restaurantId);
         if(optionalRestaurant.isPresent()) {
             restaurantRepository.save(restaurant);
             return true;
@@ -38,11 +38,11 @@ public class RestaurantService {
     }
 
     public void deleteRestaurant(String restaurantId) {
-        restaurantRepository.deleteByRestaurantId(restaurantId);
+        restaurantRepository.deleteById(restaurantId);
     }
 
     public Set<MenuItem> getAllMenuItems(String restaurantId) {
-        Optional<Restaurant> optionalRestaurant = restaurantRepository.findByRestaurantId(restaurantId);
+        Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(restaurantId);
         if(optionalRestaurant.isPresent()) {
             Restaurant restaurant = optionalRestaurant.get();
             return restaurant.getMenu_list();

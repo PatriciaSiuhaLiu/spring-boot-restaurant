@@ -13,6 +13,7 @@ import java.util.*;
 @Builder
 @Document(collection = "Restaurants")
 public class Restaurant {
+	@Id
     //@GeneratedValue(strategy = GenerationType.UUID)
     private String restaurantId = UUID.randomUUID().toString();
     private String name;

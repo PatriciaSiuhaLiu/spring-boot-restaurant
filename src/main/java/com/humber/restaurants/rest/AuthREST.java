@@ -1,5 +1,6 @@
 package com.humber.restaurants.rest;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -70,7 +71,7 @@ public class AuthREST {
 //    	 Set<String> hs_roles = new HashSet();
 //    	 hs_roles.add("USER");
     	String[] roles = {"ROLE_USER"};//notes While adding roles it should be prefixed with "ROLE_" , any one who sign up will be give user role
-        User user = new User(dto.getUsername(), dto.getEmail(), passwordEncoder.encode(dto.getPassword()),roles);
+        User user = new User(dto.getUsername(), dto.getEmail(), passwordEncoder.encode(dto.getPassword()), roles);
         userRepository.save(user);
 
         RefreshToken refreshToken = new RefreshToken();
