@@ -51,12 +51,13 @@ public class RestaurantService {
     }
 
     public boolean addMenuItemInRestaurant(String restaurantId, MenuItem menuItem) {
-    	
-    	if(0 == menuItem.getMenu_id().length())
-    		menuItem.setMenu_id(UUID.randomUUID().toString());
     		
         Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(restaurantId);
         if(optionalRestaurant.isPresent()) {
+        	
+        	if(0 == menuItem.getMenu_id().length())
+        		menuItem.setMenu_id(UUID.randomUUID().toString());
+        	
             Restaurant restaurant = optionalRestaurant.get();
             restaurant.AddMenuItem(menuItem);
             restaurantRepository.save(restaurant);
